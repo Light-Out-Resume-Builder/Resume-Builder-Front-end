@@ -1,0 +1,78 @@
+# .github/workflows/ci.yml
+name: CI
+
+on: 
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-conflicts:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+        
+    - name: Check for conflicts
+      run: |
+        git fetch origin ${{ github.event.pull_request.base.ref }}
+        git fetch origin ${{ github.event.pull_request.head.ref }}
+        git checkout ${{ github.event.pull_request.head.ref }}
+        if git merge --no-commit --no-ff origin/${{ github.event.pull_request.base.ref }}; then
+          echo "No conflicts."
+        else
+          echo "Conflicts detected."
+          exit 1
+        fi
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run ESLint
+      run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build
