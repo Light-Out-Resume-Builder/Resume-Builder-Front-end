@@ -1,83 +1,58 @@
-import React from "react"
-import { Link, useLocation } from "react-router-dom"
-import { useState } from "react"
+import React, { useState } from 'react';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import Button from "./button"
+
+
 
 const navbar = () => {
-  const [drop, setDrop] = useState(false)
-  const location = useLocation()
+  const [nav, setNav] = useState(false);
 
-  const handleDrop = () => {
-    setDrop(!drop)
-  }
+  const handleNav = () => {
+    setNav(!nav);
+  };
 
   return (
-    <nav className=" text-black relative bg-gradient-to-br from-blue-300 to-blue-400  py-3 font-libre">
-      <div className="px-1  md:px-10 lg:px-10 flex items-center justify-between">
-        <Link to="/" className={`flex items-center gap-x-1`}>
-          {/* <img
-            src={}
-            alt="Company logo"
-            className="w-12 h-12 md:w-10 md:h-10 lg:w-14 lg:h-14"
-          /> */}
-          <h1 className="text-lg lg:text-xl font-[700]">LIGHT-OUT</h1>
-        </Link>
-
-        {drop ? (
-          <div onClick={handleDrop} className="pr-5">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-8 h-8"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
-        ) : (
-          <div className="md:hidden lg:hidden pr-5" onClick={handleDrop}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-8 h-8"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
-        )}
-        <div className="hidden md:block lg:flex justify-evenly items-center">
-          <div className="hidden md:flex lg:flex items-center  text-base ">
-            <Link
-              to="/aboutUs"
-              className={`${
-                location.pathname === "/aboutUs" ? "text-purple" : ""
-              } `}
-            >
-              About
-            </Link>
-          </div>
+    <div className="flex justify-between  items-center max-w-full h-24 mx-auto px-4 mt-4 text-black text-base font-[Poppins] bg-grad">
+      <h1 className="w-full text-xl font-bold text-[#050505]">LIGHT-OUT.</h1>
+      <ul className="hidden md:flex">
+        <li className="p-4 hover:text-[#1E40AF]">Home</li>
+        <li className="p-4 hover:text-[#1E40AF]">About</li>
+        <li className="p-4 hover:text-[#1E40AF]">Services</li>
+        <li className="p-4 hover:text-[#1E40AF]">Templates</li>
+        <div className="flex items-center justify-center">
+          <Button
+            text="Login"
+            variant="text-base text-white text-center w-[100px] p-1 "
+            url="/login"
+          />
         </div>
+      </ul>
+      <div onClick={handleNav} className="block md:hidden">
+        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
       </div>
-      {drop && (
-        <div className=" p-7 right-3 max-h-min flex flex-col space-y-6 pt-3 pl-2 text-center text-xl">
-          <Link to="/aboutus">About</Link>
-          <Link to="/onBoard">Sign Up</Link>
-          {/* <Button
-            text="Register"
-            url="/onBoard"
-            variant="py-3 w-2/4  mx-auto  px-1 text-white"
-          /> */}
+      <ul
+        className={
+          nav
+            ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-[#e6ebf0] bg-[#60A5FA] ease-in-out duration-500"
+            : "ease-in-out duration-500 fixed left-[-100%]"
+        }
+      >
+        <h1 className="w-full text-normal font-bold text-[#050505] m-4">
+          LIGHT-OUT.
+        </h1>
+        <li className="p-4 border-b border-gray-300">Home</li>
+        <li className="p-4 border-b border-gray-300">About</li>
+        <li className="p-4 border-b border-gray-300">Services</li>
+        <li className="p-4 border-b border-gray-300">Templates</li>
+        <div className="flex items-center justify-center mt-4">
+          <Button
+            text="Login"
+            variant="text-base text-white text-center w-[115.79px] p-1 "
+            url="./"
+          />
         </div>
-      )}
-    </nav>
+      </ul>
+    </div>
   )
 }
 

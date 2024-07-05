@@ -14,5 +14,6 @@ body {
   padding: 0;
   min-height: 100vh;
   width: 100%;
+  @apply bg-gradient-to-l from-[#DBEAFE] to-[#60A5FA];
 }
 
