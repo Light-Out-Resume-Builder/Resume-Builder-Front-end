@@ -1,5 +1,6 @@
-import React from "react";
-import LandingPage from "./Pages/landing";
+import Header from "./components/Nav/Navbar.jsx"
+import Home from "./Pages/Home/home.jsx"
+import Footer from "./components/Footer/Footer.jsx"
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,9 +11,11 @@ import {
 function App() {
   return (
     <Router>
+      <Header />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Home />} />
       </Routes>
+      <Footer />
   </Router>
   );
 }

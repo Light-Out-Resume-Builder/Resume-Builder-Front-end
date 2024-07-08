@@ -1,20 +1,19 @@
-import React from "react"
-import Button from "../components/button"
-import HomeImg from "../assets/images/home-img.png"
-import Block1 from "../assets/images/block1.png"
-import Block2 from "../assets/images/block2.png"
-import Step1 from "../assets/images/step1.png"
-import Step2 from "../assets/images/step2.png"
-import Step3 from "../assets/images/step3.png"
-import Step4 from "../assets/images/step4.png"
-import Resume from "../assets/images/resume-stack.png"
-import AboutImg from "../assets/images/read-more.png"
-import Ben1 from "../assets/images/benefit1.png"
-import Ben2 from "../assets/images/benefit2.png"
-import Ben3 from "../assets/images/benefit3.png"
-import Ben4 from "../assets/images/benefit4.png"
-import Ben5 from "../assets/images/benefit5.png"
-import Ben6 from "../assets/images/benefit6.png"
+import Button from "../../components/Button/button"
+import HomeImg from "../../assets/images/home-img.png"
+import Block1 from "../../assets/images/block1.png"
+import Block2 from "../../assets/images/block2.png"
+import Step1 from "../../assets/images/step1.png"
+import Step2 from "../../assets/images/step2.png"
+import Step3 from "../../assets/images/step3.png"
+import Step4 from "../../assets/images/step4.png"
+import Resume from "../../assets/images/resume-stack.png"
+import AboutImg from "../../assets/images/read-more.png"
+import Ben1 from "../../assets/images/benefit1.png"
+import Ben2 from "../../assets/images/benefit2.png"
+import Ben3 from "../../assets/images/benefit3.png"
+import Ben4 from "../../assets/images/benefit4.png"
+import Ben5 from "../../assets/images/benefit5.png"
+import Ben6 from "../../assets/images/benefit6.png"
 
 const home = () => {
   return (
@@ -148,7 +147,8 @@ const home = () => {
             by recruiters internationally,
             <br /> you can begin creating your resume in
             <br /> under 5 seconds, additionally, you can <br /> edit to fit
-            your preferences and <br /> personality before clicking "Download".
+            your preferences and <br /> personality before clicking {"Download"}
+            .
             <br />
             Even if you have never created a <br /> resume before, it is that
             SIMPLE to use!
@@ -261,8 +261,8 @@ const home = () => {
                 Intelligent Designs
               </h1>
               <p className="md:w-[270px] text-xs md:text-sm">
-                With us, you won't have to bother about the minute details of
-                resume development, such as font choice, layout, etc.
+                With us, you{" won't"} have to bother about the minute details
+                of resume development, such as font choice, layout, etc.
               </p>
             </div>
           </div>

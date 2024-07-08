@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import Button from "./button"
+import { useState } from "react"
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
+import Button from "../Button/button"
 
-
-
-const navbar = () => {
-  const [nav, setNav] = useState(false);
+const Navbar = () => {
+  const [nav, setNav] = useState(false)
 
   const handleNav = () => {
-    setNav(!nav);
-  };
+    setNav(!nav)
+  }
 
   return (
     <div className="flex justify-between  items-center max-w-full h-24 mx-auto px-4 mt-4 text-black text-base font-[Poppins] bg-grad">
@@ -19,10 +17,15 @@ const navbar = () => {
         <li className="p-4 hover:text-[#1E40AF]">About</li>
         <li className="p-4 hover:text-[#1E40AF]">Services</li>
         <li className="p-4 hover:text-[#1E40AF]">Templates</li>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center gap-3">
           <Button
             text="Login"
-            variant="text-base text-white text-center w-[100px] p-1 "
+            variant="text-base border border-blue-400 bg-transparent text-white text-center w-[115.79px] p-1 "
+            url="./"
+          />
+          <Button
+            text="Sign Up"
+            variant="text-base border text-white text-center w-[115.79px] p-1 "
             url="/login"
           />
         </div>
@@ -44,11 +47,16 @@ const navbar = () => {
         <li className="p-4 border-b border-gray-300">About</li>
         <li className="p-4 border-b border-gray-300">Services</li>
         <li className="p-4 border-b border-gray-300">Templates</li>
-        <div className="flex items-center justify-center mt-4">
+        <div className="flex items-center justify-center mt-4 gap-3">
           <Button
             text="Login"
-            variant="text-base text-white text-center w-[115.79px] p-1 "
-            url="./"
+            variant="text-base border border-blue-700 bg-transparent text-white text-center w-[115.79px] p-1 "
+            url="/login"
+          />
+          <Button
+            text="Sign Up"
+            variant="text-base border border-transparent outline-none text-white text-center w-[115.79px] p-1 "
+            url="/signup"
           />
         </div>
       </ul>
@@ -56,4 +64,4 @@ const navbar = () => {
   )
 }
 
-export default navbar
+export default Navbar
