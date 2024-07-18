@@ -21,12 +21,12 @@ const Navbar = () => {
           <Button
             text="Login"
             variant="text-base border border-blue-400 bg-transparent text-white text-center w-[115.79px] p-1 "
-            url="./"
+            url="/login"
           />
           <Button
             text="Sign Up"
             variant="text-base border text-white text-center w-[115.79px] p-1 "
-            url="/login"
+            url="/signup"
           />
         </div>
       </ul>
@@ -36,7 +36,7 @@ const Navbar = () => {
       <ul
         className={
           nav
-            ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-[#e6ebf0] bg-[#60A5FA] ease-in-out duration-500"
+            ? "fixed left-0 top-0 w-[80%] h-full border-r border-r-[#e6ebf0] bg-[#60A5FA] ease-in-out duration-500"
             : "ease-in-out duration-500 fixed left-[-100%]"
         }
       >
@@ -47,7 +47,7 @@ const Navbar = () => {
         <li className="p-4 border-b border-gray-300">About</li>
         <li className="p-4 border-b border-gray-300">Services</li>
         <li className="p-4 border-b border-gray-300">Templates</li>
-        <div className="flex items-center justify-center mt-4 gap-3">
+        <div className="flex items-center justify-center mt-4 gap-2">
           <Button
             text="Login"
             variant="text-base border border-blue-700 bg-transparent text-white text-center w-[115.79px] p-1 "
