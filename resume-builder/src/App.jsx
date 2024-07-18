@@ -6,6 +6,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Services from "./Pages/services/Services.jsx";
 
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+      </Routes>
+      <Routes>
+        <Route path="/services" element={<Services/>} />
       </Routes>
       <Footer />
   </Router>

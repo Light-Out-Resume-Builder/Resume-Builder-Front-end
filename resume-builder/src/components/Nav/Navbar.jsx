@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
 import Button from "../Button/button"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
   const [nav, setNav] = useState(false)
@@ -15,7 +16,9 @@ const Navbar = () => {
       <ul className="hidden md:flex">
         <li className="p-4 hover:text-[#1E40AF]">Home</li>
         <li className="p-4 hover:text-[#1E40AF]">About</li>
+        <Link to={'/services'}>
         <li className="p-4 hover:text-[#1E40AF]">Services</li>
+        </Link>
         <li className="p-4 hover:text-[#1E40AF]">Templates</li>
         <div className="flex items-center justify-center gap-3">
           <Button
@@ -43,9 +46,12 @@ const Navbar = () => {
         <h1 className="w-full text-normal font-bold text-[#050505] m-4">
           LIGHT-OUT.
         </h1>
+        
         <li className="p-4 border-b border-gray-300">Home</li>
         <li className="p-4 border-b border-gray-300">About</li>
+        <Link to={'/services'}>
         <li className="p-4 border-b border-gray-300">Services</li>
+        </Link>
         <li className="p-4 border-b border-gray-300">Templates</li>
         <div className="flex items-center justify-center mt-4 gap-2">
           <Button
