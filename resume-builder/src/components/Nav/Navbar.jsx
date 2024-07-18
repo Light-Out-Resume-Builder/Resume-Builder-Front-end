@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
 import Button from "../Button/button"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
   const [nav, setNav] = useState(false)
@@ -13,10 +14,18 @@ const Navbar = () => {
     <div className="flex justify-between  items-center max-w-full h-24 mx-auto px-4 mt-4 text-black text-base font-[Poppins] bg-grad">
       <h1 className="w-full text-xl font-bold text-[#050505]">LIGHT-OUT.</h1>
       <ul className="hidden md:flex">
-        <li className="p-4 hover:text-[#1E40AF]">Home</li>
-        <li className="p-4 hover:text-[#1E40AF]">About</li>
-        <li className="p-4 hover:text-[#1E40AF]">Services</li>
-        <li className="p-4 hover:text-[#1E40AF]">Templates</li>
+        <li className="p-4 hover:text-[#1E40AF]">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="p-4 hover:text-[#1E40AF]">
+          <Link to="/about">About</Link>
+        </li>
+        <li className="p-4 hover:text-[#1E40AF]">
+          <Link to="/service">Services</Link>
+        </li>
+        <li className="p-4 hover:text-[#1E40AF]">
+          <Link to="/template">Templates</Link>
+        </li>
         <div className="flex items-center justify-center gap-3">
           <Button
             text="Login"
@@ -61,7 +70,7 @@ const Navbar = () => {
         </div>
       </ul>
     </div>
-  )
+  );
 }
 
 export default Navbar
