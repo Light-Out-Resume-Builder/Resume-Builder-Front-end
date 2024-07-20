@@ -302,6 +302,18 @@ const home = () => {
           </div>
         </div>
       </section>
+      <section className="flex w-full justify-between items-center bg-[url('../assets/images/benefit1.png')]">
+        <div>
+          <div>
+            <h1 className="md:text-4xl lg:text-4xl text-lg font-bold mt-7 md:mt-14 text-center">
+              Testimonials From <br /> Our Previous Users
+            </h1>
+            <p className="text-xs pt-5 md:text-lg font-bold flex justify-center text-[#1E40AF]">
+              What People Say About Us
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

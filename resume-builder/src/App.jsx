@@ -10,6 +10,7 @@ import {
 import Template from "./Pages/Template/Template.jsx";
 import Resume from "./Pages/Template/Resume.jsx";
 import CoverlLetter from "./Pages/Template/CoverlLetter.jsx";
+import Services from "./Pages/services/Services.jsx";
 
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
           <Route path="/template/resume" element={<Resume />} />
           <Route path="/template/coverletter" element={<CoverlLetter />} />
         </Route>
+      </Routes>
+      <Routes>
+        <Route path="/services" element={<Services/>} />
       </Routes>
       <Footer />
     </Router>
