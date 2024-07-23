@@ -6,12 +6,13 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useLocation,
 } from "react-router-dom";
 import Template from "./Pages/Template/Template.jsx";
 import Resume from "./Pages/Template/Resume.jsx";
 import CoverlLetter from "./Pages/Template/CoverlLetter.jsx";
-import Services from "./Pages/services/Services.jsx";
-
+import Services from "./Pages/Services/services.jsx";
+import Login from "./Pages/Login/login.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/template/resume" element={<Resume />} />
           <Route path="/template/coverletter" element={<CoverlLetter />} />
         </Route>
+        <Route path="/login" element={<Login />} />     
       </Routes>
       <Routes>
         <Route path="/services" element={<Services/>} />

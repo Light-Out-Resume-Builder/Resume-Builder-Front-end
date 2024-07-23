@@ -27,12 +27,13 @@ const Navbar = () => {
         <li className="p-4 hover:text-[#1E40AF]">
           <Link to="/template">Templates</Link>
         </li>
-        <li className="p-4 hover:text-[#1E40AF]">Home</li>
+        
+        {/*<li className="p-4 hover:text-[#1E40AF]">Home</li>
         <li className="p-4 hover:text-[#1E40AF]">About</li>
         <Link to={'/services'}>
         <li className="p-4 hover:text-[#1E40AF]">Services</li>
         </Link>
-        <li className="p-4 hover:text-[#1E40AF]">Templates</li>
+        <li className="p-4 hover:text-[#1E40AF]">Templates</li>*/}
 
         <div className="flex items-center justify-center gap-3">
           <Button
