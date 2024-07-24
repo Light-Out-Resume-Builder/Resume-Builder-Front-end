@@ -4,7 +4,7 @@ import Google from '/src/assets/images/Google.png'
 
 const login = () => {
   return (
-    <div className='min-h-screen px-32 flex flex-row gap-20'>
+    <div className='min-h-screen px-32 flex flex-row gap-20 bg-[#BFDBFE]'>
       <div>
         <h2 className='text-3xl text-blue-700 font-bold mb-6'>Creating Perfect <br /> Resume Made Easy</h2>
         <img src={Portfolio} alt="" className='' />
