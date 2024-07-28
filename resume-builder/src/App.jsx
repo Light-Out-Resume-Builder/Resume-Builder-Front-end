@@ -4,6 +4,12 @@ import LandingPage from "./Pages/LandingPage/landing.jsx"
 import Footer from "./components/Footer/Footer.jsx"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Services from "./Pages/Services/services.jsx"
+import About from "./Pages/About/about.jsx"
+import Template from "./Pages/Template/Template.jsx"
+import Resume from "./Pages/Template/Resume.jsx"
+import CoverlLetter from "./Pages/Template/CoverlLetter.jsx"
+import Login from "./Pages/Login/login.jsx"
+import SignUp from "./Pages/SignUp/signup.jsx"
 
 function App() {
   return (
@@ -12,6 +18,14 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/template" element={<Template />}>
+          <Route index element={<Resume />} />
+          <Route path="/template/resume" element={<Resume />} />
+          <Route path="/template/coverletter" element={<CoverlLetter />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route>
       </Routes>
       <Footer />
     </Router>
