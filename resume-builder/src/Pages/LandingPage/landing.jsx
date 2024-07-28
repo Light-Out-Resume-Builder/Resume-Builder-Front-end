@@ -1,11 +1,12 @@
 
-import Home from "../Home/home"
+// import Home from "../Home/home"
+import Hero from "../../components/LandingPage/Hero"
 
 const landing = () => {
     return (
         <div className="" >
-             
-             <Home />
+             <Hero />
+             {/* <Home /> */}
               
         </div>
           
