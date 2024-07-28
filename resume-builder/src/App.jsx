@@ -23,9 +23,9 @@ function App() {
           <Route index element={<Resume />} />
           <Route path="/template/resume" element={<Resume />} />
           <Route path="/template/coverletter" element={<CoverlLetter />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
         </Route>
+        <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
       </Routes>
       <Footer />
     </Router>

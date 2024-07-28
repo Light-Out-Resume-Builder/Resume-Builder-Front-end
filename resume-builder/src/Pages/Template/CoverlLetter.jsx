@@ -1,4 +1,3 @@
-import React from "react";
 import TemplateHeading from "./TemplateHeading";
 import Button from "./../../components/Button/button";
 // Import Swiper React components

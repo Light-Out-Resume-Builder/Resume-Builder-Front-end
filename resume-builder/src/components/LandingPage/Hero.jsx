@@ -3,7 +3,7 @@ import HeroImg from "../../assets/images/heroImg.png"
 
 const Hero = () => {
   return (
-    <section className="flex justify-center items-center self-stretch px-32 py-5 mt-4 w-full max-md:px-6 max-md:max-w-full">
+    <section className="flex justify-center items-center self-stretch px-32 py-5 mt-4 w-full max-md:px-6 max-md:max-w-full bg-gradient-to-b from-[#DBEAFE] to-[#60A5FA]">
       <div className="mt-3 w-full max-w-[full] max-md:mt-3 max-md:max-w-full">
         <div className="flex gap-2 max-md:flex-col">
           <div className="flex flex-col w-[63%] max-md:ml-0 max-md:w-full">
