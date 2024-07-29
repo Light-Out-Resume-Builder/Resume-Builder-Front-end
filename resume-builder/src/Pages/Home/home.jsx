@@ -16,6 +16,8 @@ import Ben5 from "../../assets/images/benefit5.png"
 import Ben6 from "../../assets/images/benefit6.png"
 
 const home = () => {
+
+  
   return (
     <>
       <div className="md:mt-14 md:px-20 px-10 md:flex-row flex bg-gradient-to-t from-[#DBEAFE] to-[#60A5FA] border-none">

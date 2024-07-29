@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import { testimonialsData } from "../../data/SiteData";
 import "slick-carousel/slick/slick.css";
