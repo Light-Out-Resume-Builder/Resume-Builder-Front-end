@@ -103,7 +103,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="p-4 border-b border-gray-300">
-            <Link to="/service" onClick={closeNav}>
+            <Link to="/services" onClick={closeNav}>
               Services
             </Link>
           </li>
