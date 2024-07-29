@@ -14,6 +14,8 @@ import CoverlLetter from "./Pages/Template/CoverlLetter.jsx";
 import Services from "./Pages/Services/services.jsx";
 import Login from "./Pages/Login/login.jsx";
 import SignUp from "./Pages/SignUp/signup.jsx";
+import EditResume from "./Pages/EditResume/editresume.jsx";
+import CreateResume from "./Pages/CreateResume/createresume.jsx"
 
 function App() {
   return (
@@ -28,7 +30,9 @@ function App() {
           <Route path="/template/coverletter" element={<CoverlLetter />} />
         </Route>
         <Route path="/login" element={<Login />} /> 
-        <Route path="/signup" element={<SignUp />} />    
+        <Route path="/signup" element={<SignUp />} />  
+        <Route path="/editresume" element={<EditResume />} />
+        <Route path="/createresume" element={<CreateResume />} />
       </Routes>
       <Routes>
         <Route path="/services" element={<Services/>} />
