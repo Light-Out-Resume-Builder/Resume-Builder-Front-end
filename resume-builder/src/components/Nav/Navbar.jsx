@@ -53,7 +53,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="p-4 hover:text-[#1E40AF]">
-            <Link to="/service" onClick={closeNav}>
+            <Link to="/services" onClick={closeNav}>
               Services
             </Link>
           </li>
