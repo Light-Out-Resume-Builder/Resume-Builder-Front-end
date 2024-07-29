@@ -16,6 +16,8 @@ import Ben5 from "../../assets/images/benefit5.png"
 import Ben6 from "../../assets/images/benefit6.png"
 
 const home = () => {
+
+  
   return (
     <>
       <div className="md:mt-14 md:px-20 px-10 md:flex-row flex bg-gradient-to-t from-[#DBEAFE] to-[#60A5FA] border-none">
@@ -299,6 +301,18 @@ const home = () => {
                 notify you about any new changes in good time.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="flex w-full justify-between items-center bg-[url('../assets/images/benefit1.png')]">
+        <div>
+          <div>
+            <h1 className="md:text-4xl lg:text-4xl text-lg font-bold mt-7 md:mt-14 text-center">
+              Testimonials From <br /> Our Previous Users
+            </h1>
+            <p className="text-xs pt-5 md:text-lg font-bold flex justify-center text-[#1E40AF]">
+              What People Say About Us
+            </p>
           </div>
         </div>
       </section>

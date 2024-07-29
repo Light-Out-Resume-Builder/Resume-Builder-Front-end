@@ -2,7 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'Testimonial': "url('./assets/images/wavy1.png')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      },
+    },
   },
-  plugins: [],
-}
+    plugins: [],
+  }
