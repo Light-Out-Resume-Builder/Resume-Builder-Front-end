@@ -18,19 +18,32 @@ import { GoPlus } from "react-icons/go";
 import { FaCheck } from "react-icons/fa6";
 import { BiFontColor } from "react-icons/bi";
 import { FaCaretDown } from "react-icons/fa";
-import { IoIosCheckmark } from "react-icons/io";
+import ResumeGrid from "../../Pages/EditResume/resumegrid.jsx"
 
 
 const editresume = () => {
+  const images = [
+    {src: Edit1, alt: ''},
+    {src: Edit2, alt: ''},
+    {src: Edit3, alt: ''},
+    {src: Edit4, alt: ''},
+    {src: Edit5, alt: ''},
+    {src: Edit6, alt: ''},
+    {src: Edit7, alt: ''},
+    {src: Edit8, alt: ''},
+    {src: Edit9, alt: ''},
+    {src: Edit10, alt: ''},
+  ]
+
   return (
     <div className='bg-[#BFDBFE]'>
-      <div className='bg-[#1E40AF] text-white flex py-5 pr-96 pl-32 gap-16'>
+      <div className='bg-[#1E40AF] text-white flex flex-row py-5 pr-96 pl-32 gap-16'>
         <p>My Dashboard</p>
-        <p className='underline'>Resume</p>
+        <p className='border-b-2'>Resume</p>
         <p>Cover Letters</p>
       </div>
 
-      <div className='flex justify-between py-5 pr-28 pl-16'>
+      <div className='flex justify-between py-5 pr-28 pl-16 '>
         <button className='text-[#1E40AF] border-solid border-2 border-[#1E40AF] px-4 py-0 rounded-lg flex items-center gap-2'><LiaTimesSolid /> Close</button>
         <button className='flex bg-[#1E40AF] text-white items-center gap-2 p-2 rounded-lg'><MdOutlineFileDownload /> Download</button>
       </div>
@@ -56,58 +69,21 @@ const editresume = () => {
             </div>
 
             <div className='relative flex items-center mt-16'>
-              <BiFontColor className='absolute left-1' />
-              <input type="text" className='bg-transparent border border-white pl-5 py-2 rounded-sm' placeholder='Hindi'/>
-              <FaCaretDown className='absolute left-44' />
+              <BiFontColor className='absolute left-3' />
+              <input type="text" className='bg-transparent border border-white pl-10 py-2 rounded-sm w-80 text-lg' placeholder='Hindi'/>
+              <FaCaretDown className='absolute left-72' />
             </div>
         </div>
 
-        <hr className='my-4 w-full border-t border-gray-300 mt-32' />
+        <hr className='my-4 w-full border-t border-gray-300 mt-28' />
 
         <div>
           <div><h2 className='text-center text-3xl'>Choose Template</h2></div>
 
-          <div className='grid grid-cols-2 gap-8 p-8 '>
-            <div className='w-70 h-80 relative group'><img src={Edit1} alt="" className='w-full h-full object-cover border-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-              <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
-            <div className='w-70 h-80 bg-white relative group'><img src={Edit2} alt="" className='w-full h-full object-cover border-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-            <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
-            <div className='w-70 h-80 relative group'><img src={Edit3} alt="" className='w-full h-full object-cover border-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-            <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
-            <div className='w-70 h-80 relative group'><img src={Edit4} alt="" className='w-full h-full object-cover border-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-              <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
-            <div className='w-70 h-80 relative group'><img src={Edit5} alt="" className='w-full h-full object-cover border-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-              <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
-            <div className='w-70 h-80 relative group'><img src={Edit6} alt="" className='w-full h-full object-cover border-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-              <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
-            <div className='w-70 h-80 relative group'><img src={Edit7} alt="" className='w-full h-full object-cover border-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-              <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
-            <div className='w-70 h-80 relative group'><img src={Edit8} alt="" className='w-full h-full object-cover border-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-              <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
-            <div className='w-70 h-80 relative group'><img src={Edit9} alt="" className='w-full h-full object-coverborder-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-              <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
-            <div className='w-70 h-80 relative group'><img src={Edit10} alt="" className='w-full h-full object-cover border-4 border-transparent group-hover:border-[#47C8B1] transition-all duration-300'/>
-              <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white'><IoIosCheckmark className='bg-[#47C8B1] rounded-full w-7 h-7' /></div>
-            </div>
-
+          <div className='grid grid-cols-2 gap-8 p-8'>
+            {images.map((image, index) => (
+              <ResumeGrid key={index} src={image.src} alt={image.alt} />
+            ))}
           </div>
         </div>
 
