@@ -13,9 +13,14 @@ const Navbar = () => {
     setNav(!nav);
   };
 
+  const closeNav = () => {
+    setNav(false);
+  };
+
   const openLoginModal = (e) => {
-    e.preventDefault(); // Prevent default anchor behavior
+    e.preventDefault(); 
     setLoginModalIsOpen(true);
+    closeNav(); 
   };
 
   const closeLoginModal = () => {
@@ -23,8 +28,9 @@ const Navbar = () => {
   };
 
   const openSignupModal = (e) => {
-    e.preventDefault(); // Prevent default anchor behavior
+    e.preventDefault(); 
     setSignupModalIsOpen(true);
+    closeNav(); 
   };
 
   const closeSignupModal = () => {
@@ -37,16 +43,24 @@ const Navbar = () => {
         <h1 className="w-full text-xl font-bold text-[#050505]">LIGHT-OUT.</h1>
         <ul className="hidden md:flex">
           <li className="p-4 hover:text-[#1E40AF]">
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={closeNav}>
+              Home
+            </Link>
           </li>
           <li className="p-4 hover:text-[#1E40AF]">
-            <Link to="/about">About</Link>
+            <Link to="/about" onClick={closeNav}>
+              About
+            </Link>
           </li>
           <li className="p-4 hover:text-[#1E40AF]">
-            <Link to="/service">Services</Link>
+            <Link to="/services" onClick={closeNav}>
+              Services
+            </Link>
           </li>
           <li className="p-4 hover:text-[#1E40AF]">
-            <Link to="/template">Templates</Link>
+            <Link to="/template" onClick={closeNav}>
+              Templates
+            </Link>
           </li>
 
           <div className="flex items-center justify-center gap-3">
@@ -79,16 +93,24 @@ const Navbar = () => {
           </h1>
 
           <li className="p-4 border-b border-gray-300">
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={closeNav}>
+              Home
+            </Link>
           </li>
           <li className="p-4 border-b border-gray-300">
-            <Link to="/about">About</Link>
+            <Link to="/about" onClick={closeNav}>
+              About
+            </Link>
           </li>
           <li className="p-4 border-b border-gray-300">
-            <Link to="/service">Services</Link>
+            <Link to="/services" onClick={closeNav}>
+              Services
+            </Link>
           </li>
           <li className="p-4 border-b border-gray-300">
-            <Link to="/template">Templates</Link>
+            <Link to="/template" onClick={closeNav}>
+              Templates
+            </Link>
           </li>
           <div className="flex items-center justify-center mt-4 gap-2">
             <button
