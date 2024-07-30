@@ -1,14 +1,14 @@
-import { useState } from "react"
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
-import Button from "../Button/button"
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import Button from "../Button/button";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [nav, setNav] = useState(false)
+  const [nav, setNav] = useState(false);
 
   const handleNav = () => {
-    setNav(!nav)
-  }
+    setNav(!nav);
+  };
 
   return (
     <div className="flex justify-between  items-center max-w-full h-24 mx-auto px-4 mt-4 text-black text-base font-[Poppins] bg-grad">
@@ -25,6 +25,9 @@ const Navbar = () => {
         </li>
         <li className="p-4 hover:text-[#1E40AF]">
           <Link to="/template">Templates</Link>
+        </li>
+        <li className="p-4 hover:text-[#1E40AF]">
+          <Link to="/create-cover-letter">CoverLetter</Link>
         </li>
         <div className="flex items-center justify-center gap-3">
           <Button
@@ -71,6 +74,6 @@ const Navbar = () => {
       </ul>
     </div>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
