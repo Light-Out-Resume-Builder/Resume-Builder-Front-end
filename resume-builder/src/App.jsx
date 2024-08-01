@@ -1,5 +1,6 @@
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from "./components/Nav/Navbar.jsx"
-// import Home from "./Pages/Home/home.jsx"
 import LandingPage from "./Pages/LandingPage/landing.jsx"
 import Footer from "./components/Footer/Footer.jsx"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
@@ -14,6 +15,19 @@ import SignUp from "./Pages/SignUp/signup.jsx"
 function App() {
   return (
     <Router>
+        <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        // toastClassName="bg-blue-500 text-white font-semibold rounded-lg shadow-lg p-4 mb-4"
+        // bodyClassName={() => "text-sm"}
+      />
       <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
