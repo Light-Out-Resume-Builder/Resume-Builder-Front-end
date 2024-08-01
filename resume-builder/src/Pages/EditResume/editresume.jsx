@@ -37,7 +37,7 @@ const editresume = () => {
 
   return (
     <div className='bg-[#BFDBFE]'>
-      <div className='bg-[#1E40AF] text-white flex flex-row py-5 pr-96 pl-32 gap-16'>
+      <div className='bg-[#1E40AF] text-white flex pl-20 py-5 md:pr-96 md:pl-32 gap-8 md:gap-16'>
         <p>My Dashboard</p>
         <p className='border-b-2'>Resume</p>
         <p>Cover Letters</p>
@@ -49,7 +49,7 @@ const editresume = () => {
       </div>
 
       <div className='flex gap-20'>
-        <div className='bg-[#0E223C] text-white w-[600px] ml-16 '>
+        <div className='bg-[#0E223C] text-white w-[600px] md:ml-16 '>
           <div className='w-full px-10 pt-20'>
             <div className='flex items-center gap-10 text-xl'>
                 <div><p>Line Spacing (100%)</p></div>
@@ -80,7 +80,7 @@ const editresume = () => {
         <div>
           <div><h2 className='text-center text-3xl'>Choose Template</h2></div>
 
-          <div className='grid grid-cols-2 gap-8 p-8'>
+          <div className='grid md:grid-cols-2 grid-cols-2 gap-4 md:gap-8 p-8'>
             {images.map((image, index) => (
               <ResumeGrid key={index} src={image.src} alt={image.alt} />
             ))}
@@ -89,7 +89,7 @@ const editresume = () => {
 
         </div>
 
-        <div className='flex flex-col'>
+        <div className='flex flex-col hidden md:block'>
           <div className='bg-white rounded-lg w-11/12'><img className='w-full' src={Edit2} alt="" /></div>
           <div className='w-11/12 mt-20'><img className='' src={Edit11} alt="" /></div>
         </div>
