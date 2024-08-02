@@ -5,10 +5,10 @@ import { IoLogoLinkedin } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1D1D1D] text-white px-8 py-12 font-[Quicksand]">
+    <footer className="bg-[#1D1D1D] text-white md:px-32 lg:px-32 xl:md:px-32 px-8 py-12 font-[Quicksand]">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-          <h1 className="text-blue-400 text-2xl font-bold mb-2">LIGHT - OUT</h1>
+          <h1 className="text-blue-400 text-2xl font-extrabold mb-2">LIGHT-OUT</h1>
           <p>Create your resume in a minute, get your <br /> dream job in a blink.</p>
           <div className="flex space-x-4 mt-4">
             <a href="#">
@@ -44,22 +44,22 @@ const Footer = () => {
           <h3 className="font-semibold mb-4">Company</h3>
           <ul>
             <li className="mb-2">
-              <a href="#" className="hover:underline">
+              <a href="/" className="hover:underline">
                 Home
               </a>
             </li>
             <li className="mb-2">
-              <a href="#" className="hover:underline">
+              <a href="/about" className="hover:underline">
                 About Us
               </a>
             </li>
             <li className="mb-2">
-              <a href="#" className="hover:underline">
+              <a href="/services" className="hover:underline">
                 Services
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a href="/template" className="hover:underline">
                 Template
               </a>
             </li>

@@ -1,41 +1,145 @@
-import React from 'react'
-import Portfolio from '/src/assets/images/portfolio.png'
-import Google from '/src/assets/images/Google.png'
+import { useState } from "react";
+import PropTypes from 'prop-types';
+import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Portfolio from '/src/assets/images/portfolio.png';
+import Google from '/src/assets/images/Google.png';
 
-const login = () => {
+Modal.setAppElement('#root');
+
+const Login = ({ modalIsOpen, closeModal }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      })
+
+    const data = await response.json();
+
+      if (response.ok) {
+        console.log(data)
+        localStorage.setItem("token", data.token.access)
+        localStorage.setItem("refreshToken", data.token.refresh)
+        localStorage.setItem("user", JSON.stringify(data.user))
+        toast.success('Login successful!') 
+         window.location.reload()
+         closeModal()
+         navigate("/dashboard")
+      } else {
+        toast.error("Login failed: " + data.message)
+      }
+    } catch (error) {
+      toast.error("Login failed: " + error.message)
+    }
+  };
   return (
-    <div className='min-h-screen px-32 flex flex-row gap-20 bg-[#BFDBFE]'>
-      <div>
-        <h2 className='text-3xl text-blue-700 font-bold mb-6'>Creating Perfect <br /> Resume Made Easy</h2>
-        <img src={Portfolio} alt="" className='' />
+    <Modal
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      contentLabel="Login Modal"
+      className=" p-8 rounded-lg shadow-lg mx-4 md:mx-auto my-auto w-full max-w-4xl bg-[#BFDBFE]"
+      overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50"
+    >
+      <button
+        className="absolute top-2 right-2 size-20 text-gray-700 hover:text-gray-900"
+        onClick={closeModal}
+      >
+        &times;
+      </button>
+      <div className="flex flex-col md:flex-row gap-6 bg-[#BFDBFE]">
+        <div className="flex-1">
+          <h2 className="text-2xl md:text-3xl text-blue-700 font-bold mb-6">
+            Creating Perfect <br /> Resume Made Easy
+          </h2>
+          <img
+            src={Portfolio}
+            alt="Portfolio"
+            className="w-full h-auto hidden md:block lg:block"
+          />
+        </div>
+        <div className="flex-1">
+          <h2 className="text-2xl md:text-3xl font-semibold">Welcome Back!</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4 mt-8">
+              <label
+                htmlFor="email"
+                className="block text-lg md:text-xl font-medium"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter Email Address"
+                className="mt-1 block w-full px-3 py-2 border border-blue-700 rounded-md bg-transparent text-lg md:text-xl placeholder-gray-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="password"
+                className="block text-lg md:text-xl font-medium"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                className="mt-1 block w-full px-3 py-2 border border-blue-700 rounded-md bg-transparent text-lg md:text-xl placeholder-gray-500"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="text-right">
+              <p className="text-sm text-blue-700 font-bold">
+                Forgot Password?
+              </p>
+            </div>
+            <button
+              type="submit"
+              className="w-full text-white bg-blue-700 px-3 py-2 rounded-md mt-6"
+            >
+              Sign In
+            </button>
+            <div className="mt-6 text-center font-medium">
+              <p>Or</p>
+            </div>
+            <button
+              type="button"
+              className="w-full text-white bg-blue-700 px-3 py-2 rounded-md mt-6 flex items-center justify-center gap-2"
+            >
+              <img src={Google} alt="Google" className="w-4" /> Sign In With
+              Google
+            </button>
+            <div className="text-center mt-6">
+              <p>
+                {"Don't"} have an account?{" "}
+                <span className="text-blue-700 font-bold cursor-pointer">
+                  <Link to="/signup">Sign Up</Link>
+                </span>
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
-
-      <div>
-        <h2 className='text-3xl font-semibold'>Welcome Back!</h2>
-        <form action="">
-          <div className='mb-4 mt-24'>
-            <label htmlFor="email" className='block text-xl font-medium '>Email</label>
-            <input type="email" id='email' placeholder='Enter Email Address' className='mt-1 block w-[30rem] px-3 py-4 border border-blue-700 rounded-md bg-transparent text-xl placeholder-grey-500' />
-          </div>
-
-          <div className='mb-4'>
-            <label htmlFor="Password" className='block text-xl font-medium '>Password</label>
-            <input type="password" id='email' placeholder='Enter Password' className='mt-1 block w-[30rem] px-3 py-4 border border-blue-700 rounded-md bg-transparent text-xl placeholder-grey-500' />
-          </div>
-
-          <div className=''><p className='ml-[22.5rem] text-sm text-blue-700 font-bold'>Forgot Password?</p></div>
-
-          <button type='Signin' className='text-white bg-blue-700 w-[30rem] px-3 py-4 rounded-md mt-12'>Sign In</button>
-
-          <div className='mt-8 text-center font-medium'><p>Or</p></div>
-
-          <button type='Signin' className='text-white bg-blue-700 w-[30rem] px-3 py-4 rounded-md mt-8 flex items-center justify-center gap-2'><img src={Google} alt="" className='w-4' /> Sign In With Google</button>
-
-          <div className='text-center mt-10'><p>Don't have an account? Sign Up</p></div>
-        </form>
-      </div>
-    </div>
+    </Modal>
   )
-}
+};
 
-export default login
+Login.propTypes = {
+  modalIsOpen: PropTypes.bool.isRequired, 
+  closeModal: PropTypes.func.isRequired, 
+};
+
+export default Login;
