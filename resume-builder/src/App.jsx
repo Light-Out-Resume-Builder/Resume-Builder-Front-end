@@ -3,7 +3,7 @@ import Header from "./components/Nav/Navbar.jsx"
 import LandingPage from "./Pages/LandingPage/landing.jsx"
 import Footer from "./components/Footer/Footer.jsx"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Services from "./Pages/Services/services.jsx"
+import Services from "./Pages/services/Services.jsx"
 import About from "./Pages/About/about.jsx"
 import Template from "./Pages/Template/Template.jsx"
 import Resume from "./Pages/Template/Resume.jsx"
@@ -23,8 +23,8 @@ function App() {
           <Route index element={<Resume />} />
           <Route path="/template/resume" element={<Resume />} />
           <Route path="/template/coverletter" element={<CoverlLetter />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/signup" element={<SignUp />} /> */}
         </Route>
       </Routes>
       <Footer />
