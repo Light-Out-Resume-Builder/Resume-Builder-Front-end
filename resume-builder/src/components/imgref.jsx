@@ -8,6 +8,10 @@ import resume01 from "../assets/images/resume-1.svg"
 import resume02 from "../assets/images/resume-2.svg"
 import cover01 from "../assets/images/coverLetter-1.svg"
 import cover02 from "../assets/images/coverLetter-2.svg"
+import create from "../assets/images/createResume.svg"
+import importLinkedin from "../assets/images/importLinkedin.svg"
+import importFile from "../assets/images/importFiles.svg"
+
 
 
 
@@ -23,5 +27,7 @@ export default {
     resume02,
     cover01,
     cover02,
-   
+    create,
+    importLinkedin,
+   importFile,
 }
