@@ -88,3 +88,26 @@ export const faqData = [
     `Answer: "Yes, our support team is available to help you with any questions or issues you may have."`,
   },
 ];
+
+export const dashboarddata = [
+  {
+    title: "Product Design Resume",
+    lastUpdate: "Edited: 1 month ago",
+    img: imgref.resume01
+  },
+  {
+    title: "Product Design Resume",
+    lastUpdate: "Edited: 2 weeks ago",
+    img: imgref.resume02
+  },
+  {
+    title: "Virtual Assistance cover letter",
+    lastUpdate: "Edited: 1 week ago",
+    img: imgref.cover02
+  },
+  {
+    title: "Product Design Cover Letter",
+    lastUpdate: "Edited: 15 hours ago",
+    img: imgref.cover01
+  }
+]

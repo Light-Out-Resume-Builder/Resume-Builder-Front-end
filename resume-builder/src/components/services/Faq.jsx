@@ -9,7 +9,8 @@ function Faq() {
   };
 
   return (
-    <div className="w-full bg-[#BFDBFE]">
+    
+    <div className="w-full bg-[#BFDBFE] pb-[69px]">
       <div className="w-[95%] lg:w-[90%] max-w-[1095px] mx-auto p-4">
         <h2 className="px-5 md:px-0 pb-5 lg:pb-14 font-bold text-3xl  lg:text-[48px] leading-[35px] xl:leading-[52px] mb-6 text-center">
           Frequently Asked Questions
