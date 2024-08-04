@@ -2,16 +2,14 @@ import TemplateHeading from "./TemplateHeading";
 import Button from "./../../components/Button/button";
 // Import Swiper React components
 import { Swiper, SwiperSlide} from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-
 import './styles.css';
-
 // import required modules
 import { Navigation } from 'swiper/modules'
 import { Coverletterexamples, Minimalist, Progressive, Timeless } from "./TemplateData";
+
 
 const CoverlLetter = () => {
   return (

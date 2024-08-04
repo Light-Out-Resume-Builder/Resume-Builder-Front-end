@@ -66,12 +66,18 @@ function Testimonials() {
                         />
                       </div>
                       <div className="font-bold">
-                        <h4 className="text-xl md:text-2xl">{testimony.name}</h4>
-                        <p className="text-[#1E40AF] text-sm">{testimony.role}</p>
+                        <h4 className="text-xl md:text-2xl">
+                          {testimony.name}
+                        </h4>
+                        <p className="text-[#1E40AF] text-sm">
+                          {testimony.role}
+                        </p>
                       </div>
                     </div>
                     <div>
-                      <p className="text-gray-800 text-sm leading-[31px] font-medium">&quot;{testimony.review}&quot;</p>
+                      <p className="text-gray-800 text-sm leading-[31px] font-medium">
+                        &quot;{testimony.review}&quot;
+                      </p>
                     </div>
                   </div>
                 </div>
