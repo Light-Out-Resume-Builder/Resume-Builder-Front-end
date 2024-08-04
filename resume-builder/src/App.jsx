@@ -1,15 +1,18 @@
-import Header from "./components/Nav/Navbar.jsx"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import Header from "./components/Nav/Navbar.jsx";
 // import Home from "./Pages/Home/home.jsx"
-import LandingPage from "./Pages/LandingPage/landing.jsx"
-import Footer from "./components/Footer/Footer.jsx"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Services from "./Pages/Services/services.jsx"
-import About from "./Pages/About/about.jsx"
-import Template from "./Pages/Template/Template.jsx"
-import Resume from "./Pages/Template/Resume.jsx"
-import CoverlLetter from "./Pages/Template/CoverlLetter.jsx"
-import Login from "./Pages/Login/login.jsx"
-import SignUp from "./Pages/SignUp/signup.jsx"
+import LandingPage from "./Pages/LandingPage/landing.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Services from "./Pages/Services/services.jsx";
+import About from "./Pages/About/about.jsx";
+import Template from "./Pages/Template/Template.jsx";
+import Resume from "./Pages/Template/Resume.jsx";
+import CoverlLetter from "./Pages/Template/CoverlLetter.jsx";
+import Login from "./Pages/Login/login.jsx";
+import SignUp from "./Pages/SignUp/signup.jsx";
 
 function App() {
   return (
@@ -38,7 +41,7 @@ function App() {
           <Route path="/template/coverletter" element={<CoverlLetter />} />
         </Route>
         <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
       <Footer />
     </Router>
