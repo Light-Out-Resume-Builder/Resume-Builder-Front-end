@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MdOutlineFileDownload } from "react-icons/md";
 import { LiaTimesSolid } from "react-icons/lia";
 import Edit1 from '../../assets/images/edit1.png'
@@ -17,8 +17,9 @@ import { FiMinus } from "react-icons/fi";
 import { GoPlus } from "react-icons/go";
 import { FaCheck } from "react-icons/fa6";
 import { BiFontColor } from "react-icons/bi";
-import { FaCaretDown } from "react-icons/fa";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import ResumeGrid from "../../Pages/EditResume/resumegrid.jsx"
+import DashboardNav from "../../components/Dashboard/DashboardNav.jsx"
 
 
 const editresume = () => {
@@ -35,12 +36,30 @@ const editresume = () => {
     {src: Edit10, alt: ''},
   ]
 
+  {/* Color Palette Section */}
+  const [selectedColor, setSelectedColor] = useState(null);
+
+  const handleColorClick = (color) => {
+    setSelectedColor(color);
+  };
+
+  /* Language Dropdown Component Section */
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  }
+
+  const handleSelect = (language) => {
+    console.log(`Selected language: ${language}`);
+    setIsOpen(false);
+  }
+
+
   return (
     <div className='bg-[#BFDBFE]'>
-      <div className='bg-[#1E40AF] text-white flex pl-20 py-5 md:pr-96 md:pl-32 gap-8 md:gap-16'>
-        <p>My Dashboard</p>
-        <p className='border-b-2'>Resume</p>
-        <p>Cover Letters</p>
+      <div>
+        <DashboardNav />
       </div>
 
       <div className='flex justify-between py-5 pr-28 pl-16 '>
@@ -61,18 +80,31 @@ const editresume = () => {
             </div>
 
             <div className='flex gap-12 mt-16'>
-              <div className='bg-[#2F80ED] rounded-full w-6 h-6'></div>
-              <div className='bg-[#C3AB56] rounded-full w-6 h-6 text-white flex items-center justify-center'><FaCheck /></div>
-              <div className='bg-[#90D97D] rounded-full w-6 h-6'></div>
-              <div className='bg-[#BD7AC8] rounded-full w-6 h-6'></div>
+              <div onClick={() => handleColorClick('#2F80ED')} className={`flex items-center justify-center rounded-full w-6 h-6 cursor-pointer border ${selectedColor === '#2F80ED' ? 'border-black' : 'border-gray-200'}`} style={{ backgroundColor: '#2F80ED' }}> {selectedColor === '#2F80ED' && (<FaCheck className='text-white text-base absolute' />)}</div>
+              <div onClick={() => handleColorClick('#C3AB56')} className={`flex items-center justify-center rounded-full w-6 h-6 cursor-pointer border ${selectedColor === '#C3AB56' ? 'border-black' : 'border-gray-200'}`} style={{ backgroundColor: '#C3AB56' }}> {selectedColor === '#C3AB56' && (<FaCheck className='text-white text-base absolute' />)}</div>
+              <div onClick={() => handleColorClick('#90D97D')} className={`flex items-center justify-center rounded-full w-6 h-6 cursor-pointer border ${selectedColor === '#90D97D' ? 'border-black' : 'border-gray-200'}`} style={{ backgroundColor: '#90D97D' }}> {selectedColor === '#90D97D' && (<FaCheck className='text-white text-base absolute' />)}</div>
+              <div onClick={() => handleColorClick('#BD7AC8')} className={`flex items-center justify-center rounded-full w-6 h-6 cursor-pointer border ${selectedColor === '#BD7AC8' ? 'border-black' : 'border-gray-200'}`} style={{ backgroundColor: '#BD7AC8' }}> {selectedColor === '#BD7AC8' && (<FaCheck className='text-white text-base absolute' />)}</div>
               <div className='bg-[#0E0C0C] rounded-full w-6 h-6 text-white flex items-center justify-center'><GoPlus /></div>
             </div>
 
             <div className='relative flex items-center mt-16'>
               <BiFontColor className='absolute left-3' />
-              <input type="text" className='bg-transparent border border-white pl-10 py-2 rounded-sm w-80 text-lg' placeholder='Hindi'/>
-              <FaCaretDown className='absolute left-72' />
+              <input type="text" readOnly className='bg-transparent border border-white pl-10 py-2 rounded-sm w-80 text-lg' placeholder='Hindi'/>
+              <div className='flex items-center cursor-pointer' onClick={toggleDropdown}>{isOpen ? <FaCaretUp className='absolute left-72' /> : <FaCaretDown className='absolute left-72' />}</div>
             </div>
+
+            {/* Language Dropdown Options */}
+            {isOpen && (
+              <div className='absolute left-36 w-[280px] border border-gray-300 bg-white rounded shadow-lg z-10 text-black'>
+                <div onClick={() => handleSelect('English')} className='p-2 cursor-pointer hover:bg-gray-200'>English</div>
+                <div onClick={() => handleSelect('Spanish')} className='p-2 cursor-pointer hover:bg-gray-200'>Spanish</div>
+                <div onClick={() => handleSelect('French')} className='p-2 cursor-pointer hover:bg-gray-200'>French</div>
+                <div onClick={() => handleSelect('Igbo')} className='p-2 cursor-pointer hover:bg-gray-200'>Igbo</div>
+                <div onClick={() => handleSelect('Hausa')} className='p-2 cursor-pointer hover:bg-gray-200'>Hausa</div>
+                <div onClick={() => handleSelect('Yoruba')} className='p-2 cursor-pointer hover:bg-gray-200'>Yoruba</div>
+              </div>
+            )}
+
         </div>
 
         <hr className='my-4 w-full border-t border-gray-300 mt-28' />
