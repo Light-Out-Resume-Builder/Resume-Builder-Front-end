@@ -1,24 +1,23 @@
-import { useState, useEffect } from "react"
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { Link, useNavigate } from "react-router-dom"
-import { toast } from 'react-toastify';
-import Login from '../../Pages/Login/login'; 
-import Signup from '../../Pages/SignUp/signup'; 
+import { useState, useEffect } from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Login from "../../Pages/Login/login";
+import Signup from "../../Pages/SignUp/signup";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
   const [signupModalIsOpen, setSignupModalIsOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const navigate = useNavigate()
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
-
-     useEffect(() => {
-       const token = localStorage.getItem("token")
-       if (token) {
-         setIsLoggedIn(true)
-       }
-     }, [])
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const handleNav = () => {
     setNav(!nav);
@@ -29,9 +28,9 @@ const Navbar = () => {
   };
 
   const openLoginModal = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setLoginModalIsOpen(true);
-    closeNav(); 
+    closeNav();
   };
 
   const closeLoginModal = () => {
@@ -39,39 +38,39 @@ const Navbar = () => {
   };
 
   const openSignupModal = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setSignupModalIsOpen(true);
-    closeNav(); 
+    closeNav();
   };
 
   const closeSignupModal = () => {
     setSignupModalIsOpen(false);
   };
 
-   const handleLogout = async () => {
-     const refreshToken = localStorage.getItem("refreshToken")
-     try {
-       const response = await fetch("/logout/", {
-         method: "POST",
-         headers: { "Content-Type": "application/json" },
-         body: JSON.stringify({ refresh: refreshToken }),
-       })
-       const data = await response.json()
-       if (response.ok) {
-         localStorage.removeItem("token")
-         localStorage.removeItem("refreshToken")
-         localStorage.removeItem("user")
-         setIsLoggedIn(false)
-         toast.success("Logout successful!")
-         navigate("/")
-       } else {
-         toast.error("Logout failed: " + data.message)
-       }
-     } catch (error) {
-       toast.error("Logout failed: " + error.message)
-     }
+  const handleLogout = async () => {
+    const refreshToken = localStorage.getItem("refreshToken");
+    try {
+      const response = await fetch("/logout/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ refresh: refreshToken }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("user");
+        setIsLoggedIn(false);
+        toast.success("Logout successful!");
+        navigate("/");
+      } else {
+        toast.error("Logout failed: " + data.message);
+      }
+    } catch (error) {
+      toast.error("Logout failed: " + error.message);
+    }
   };
-  
+
   return (
     <>
       <div className="flex justify-between items-center max-w-full h-24 mx-auto px-4 mt-4 text-black text-base font-[Poppins] bg-grad">
@@ -95,6 +94,11 @@ const Navbar = () => {
           <li className="p-4 hover:text-[#1E40AF]">
             <Link to="/template" onClick={closeNav}>
               Templates
+            </Link>
+          </li>
+          <li className="p-4 hover:text-[#1E40AF]">
+            <Link to="/dashboard" onClick={closeNav}>
+              DashBoard
             </Link>
           </li>
 
@@ -167,14 +171,19 @@ const Navbar = () => {
               Templates
             </Link>
           </li>
+          <li className="p-4 border-b border-gray-300">
+            <Link to="/dashboard" onClick={closeNav}>
+              Dashboard
+            </Link>
+          </li>
           <div className="flex items-center justify-center mt-4 gap-2">
             {isLoggedIn ? (
               <>
                 <button
                   className="text-base border border-blue-400 bg-transparent text-white text-center w-[115.79px] p-1 rounded-md"
                   onClick={() => {
-                    closeNav()
-                    navigate("/dashboard")
+                    closeNav();
+                    navigate("/dashboard");
                   }}
                 >
                   My Account
@@ -208,7 +217,7 @@ const Navbar = () => {
         <Signup modalIsOpen={signupModalIsOpen} closeModal={closeSignupModal} />
       </div>
     </>
-  )
+  );
 };
 
 export default Navbar;
