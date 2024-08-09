@@ -1,4 +1,3 @@
-import React from 'react'
 import ToggleButton from "../../Pages/CreateResume/togglebutton.jsx"
 import { CgTemplate } from "react-icons/cg";
 import { GrFormUpload } from "react-icons/gr";
