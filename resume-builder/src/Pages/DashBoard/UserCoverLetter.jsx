@@ -1,7 +1,7 @@
 import React from 'react'
 import DashboardLayout from '../../components/Dashboard/DashboardLayout'
-import coverletter from "../../assets/images/coverletter.png";
-import importfile from "../../assets/images/importfile.png";
+import coverletter from "../../assets/images/Coverletterexamplesresume.png";
+import importfile from "../../assets/images/importFiles.svg";
 import Button from "./../../components/Button/button";
 import { Outlet } from "react-router-dom";
 

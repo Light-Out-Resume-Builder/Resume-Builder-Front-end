@@ -13,11 +13,11 @@ import Login from "./Pages/Login/login.jsx"
 import SignUp from "./Pages/SignUp/signup.jsx"
 import EditResume from "./Pages/EditResume/editresume.jsx"
 import CreateResume from "./Pages/CreateResume/createresume.jsx"
-import Dashboard from "./Pages/dashboard/Dashboard.jsx";
+import Dashboard from "./Pages/DashBoard/Dashboard.jsx";
 // import DashboardNav from "./components/Dashboard/DashboardNav.jsx";
-import UserResume from "./Pages/dashboard/UserResume.jsx";
+import UserResume from "./Pages/DashBoard/UserResume.jsx";
 // import DashboardLayout from "./components/Dashboard/DashboardLayout.jsx";
-import UserCoverLetter from "./Pages/dashboard/UserCoverLetter.jsx";
+import UserCoverLetter from "./Pages/DashBoard/UserCoverLetter.jsx";
 
 
 function App() {
