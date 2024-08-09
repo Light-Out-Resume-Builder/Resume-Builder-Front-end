@@ -1,6 +1,7 @@
-import React from 'react'
-import DashboardLayout from '../../components/Dashboard/DashboardLayout'
+import React from "react";
+import DashboardLayout from "../../components/Dashboard/DashboardLayout";
 import coverletter from "../../assets/images/coverletter.png";
+// import coverletter from "../../assets/images/coverletter.png";
 import importfile from "../../assets/images/importfile.png";
 import Button from "./../../components/Button/button";
 import { Outlet } from "react-router-dom";
@@ -41,7 +42,7 @@ function UserCoverLetter() {
             </div>
             <Button
               text="Import from files"
-              url="/dashboard/CoverLetterDash/a"
+              url="/dashboard/cover-letter/a"
               variant="mx-auto text-base text-white text-center md:w-[100px] lg:w-[200px] md:px-5 md:py-3 px:3 py-2 flex items-center justify-center"
             />
           </div>
@@ -52,4 +53,4 @@ function UserCoverLetter() {
   );
 }
 
-export default UserCoverLetter
+export default UserCoverLetter;

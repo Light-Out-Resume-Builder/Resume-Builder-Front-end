@@ -35,7 +35,7 @@ const CoverLetter = () => {
           {/* div housing import file  */}
           <div>
             <div className="bg-white py-20 px-10 lg:w-[600px] lg:h-[700px] flex flex-col gap-5 lg:gap-10 justify-center mb-5 lg:mb-10">
-              <p className="text-center lg:text-[30px]">Import from files</p>
+              <p className="text-center lg:text-[30px]">Import from filesqqq</p>
               <img src={importfile} alt="" className="mx-auto" />
             </div>
             <Button
