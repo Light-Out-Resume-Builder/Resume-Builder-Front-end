@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Login from "../../Pages/Login/login";
 import Signup from "../../Pages/SignUp/signup";
+import Logo from "../../assets/images/logo-png 1.png"
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -74,7 +75,7 @@ const Navbar = () => {
   return (
     <>
       <div className="flex justify-between items-center max-w-full h-24 mx-auto px-4 mt-4 text-black text-base font-[Poppins] bg-grad">
-        <h1 className="w-full text-xl font-bold text-[#050505]">LIGHT-OUT.</h1>
+        <img src={Logo} alt="" className="" />
         <ul className="hidden md:flex">
           <li className="p-4 hover:text-[#1E40AF]">
             <Link to="/" onClick={closeNav}>
