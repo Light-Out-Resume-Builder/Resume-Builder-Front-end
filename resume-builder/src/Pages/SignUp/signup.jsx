@@ -46,7 +46,7 @@ const Signup = ({ modalIsOpen, closeModal }) => {
       overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50"
     >
       <button
-        className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
+        className="absolute top-2 right-8 lg:right-64 text-black-700 hover:text-gray-900"
         onClick={closeModal}
       >
         &times;
