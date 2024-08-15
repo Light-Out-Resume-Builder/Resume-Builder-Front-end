@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ToggleButton from "../../Pages/CreateResume/togglebutton.jsx"
 import DashboardNav from "../../components/Dashboard/DashboardNav.jsx"
 import { CgTemplate } from "react-icons/cg";
@@ -30,7 +30,7 @@ import Reference from "../../assets/images/megaphone.png"
 import { HiMiniCalendarDays } from "react-icons/hi2";
 import { Link } from 'react-router-dom';
 
-const createresume = () => {
+const Createresume = () => {
   const [openSections, setOpenSections] = useState({});
 
   const toggleSection = (sectionId) => {
@@ -398,4 +398,4 @@ const createresume = () => {
   )
 }
 
-export default createresume
+export default Createresume
