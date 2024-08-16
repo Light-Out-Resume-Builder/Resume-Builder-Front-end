@@ -1,11 +1,42 @@
-import PropTypes from "prop-types"
-import Modal from "react-modal"
-import Portfolio from "/src/assets/images/portfolio.png"
-import Google from "/src/assets/images/Google.png"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import Modal from "react-modal";
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Portfolio from "/src/assets/images/portfolio.png";
+import Google from "/src/assets/images/Google.png";
 
 Modal.setAppElement("#root")
 
-const signup = ({ modalIsOpen, closeModal }) => {
+const Signup = ({ modalIsOpen, closeModal }) => {
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('/signup/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fullname: fullName, email, password }),
+      });
+
+        const data = await response.json();
+
+      if (response.ok) {
+        toast.success("User created successfully")
+        closeModal()
+        navigate("/login")
+      } else {
+         toast.error('Signup failed: ' + data.message)
+      }
+    } catch (error) {
+      toast.error('Signup failed: ' + error.message)
+    }
+  };
+
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -15,7 +46,7 @@ const signup = ({ modalIsOpen, closeModal }) => {
       overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50"
     >
       <button
-        className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
+        className="absolute top-2 right-8 lg:right-64 text-black-700 hover:text-gray-900"
         onClick={closeModal}
       >
         &times;
@@ -31,7 +62,7 @@ const signup = ({ modalIsOpen, closeModal }) => {
           <h2 className="text-2xl md:text-3xl font-semibold">
             Sign Up To Light-Out
           </h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-4 mt-8">
               <label
                 htmlFor="full-name"
@@ -42,8 +73,11 @@ const signup = ({ modalIsOpen, closeModal }) => {
               <input
                 type="text"
                 id="full-name"
+                name="fullname"
                 placeholder="Enter Full Name"
                 className="mt-1 block w-full px-3 py-2 border border-blue-700 rounded-md bg-transparent text-lg md:text-xl placeholder-gray-500"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -56,8 +90,11 @@ const signup = ({ modalIsOpen, closeModal }) => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 placeholder="Enter Email Address"
                 className="mt-1 block w-full px-3 py-2 border border-blue-700 rounded-md bg-transparent text-lg md:text-xl placeholder-gray-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -72,6 +109,8 @@ const signup = ({ modalIsOpen, closeModal }) => {
                 id="password"
                 placeholder="Enter Password"
                 className="mt-1 block w-full px-3 py-2 border border-blue-700 rounded-md bg-transparent text-lg md:text-xl placeholder-gray-500"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="flex items-center">
@@ -111,9 +150,9 @@ const signup = ({ modalIsOpen, closeModal }) => {
   )
 }
 
-signup.propTypes = {
+Signup.propTypes = {
   modalIsOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
 }
 
-export default signup
+export default Signup
