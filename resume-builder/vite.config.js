@@ -9,8 +9,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "posts": "http://localhost:5173",
-      "register": "http://localhost:5173", // Add this line
+      posts: "http://localhost:5173",
+      register: "http://localhost:5173", // Add this line
     },
   },
-})
+  define: {
+    global: {},
+  },
+});

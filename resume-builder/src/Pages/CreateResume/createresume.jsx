@@ -1,5 +1,6 @@
-import React from 'react'
+import { useState } from 'react'
 import ToggleButton from "../../Pages/CreateResume/togglebutton.jsx"
+import DashboardNav from "../../components/Dashboard/DashboardNav.jsx"
 import { CgTemplate } from "react-icons/cg";
 import { GrFormUpload } from "react-icons/gr";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
@@ -16,29 +17,37 @@ import { MdFormatListBulleted } from "react-icons/md";
 import { MdFormatListNumbered } from "react-icons/md";
 import { AiOutlineLink } from "react-icons/ai";
 import { FaMagic } from "react-icons/fa";
-import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { GoTrash } from "react-icons/go";
 import { MdAdd } from "react-icons/md";
 import { MdStarRate } from "react-icons/md";
 import Language from "../../assets/images/speech_icon.png"
 import Certificate from"../../assets/images/certificate.png"
 import Handshake from "../../assets/images/handshake.png"
-import Link from "../../assets/images/link-alt.png"
+import Linkalt from "../../assets/images/link-alt.png"
 import Award from "../../assets/images/award.png"
 import Reference from "../../assets/images/megaphone.png"
 import { HiMiniCalendarDays } from "react-icons/hi2";
+import { Link } from 'react-router-dom';
 
-const createresume = () => {
+const Createresume = () => {
+  const [openSections, setOpenSections] = useState({});
+
+  const toggleSection = (sectionId) => {
+    setOpenSections(prevState => ({
+      ...prevState, 
+      [sectionId]: !prevState[sectionId],
+    }));
+  }
+
   return (
     <div className='bg-[#BFDBFE]'>
-      <div className='bg-[#1E40AF] text-white flex py-5 pr-20 pl-20 pr-96 pl-32 gap-16 text-lg'>
-        <p>My Dashboard</p>
-        <p className='border-b-2'>Resume</p>
-        <p>Cover Letters</p>
+      <div>
+        <DashboardNav />
       </div>
 
       <div className='flex pl-20 py-5 justify-between pr-20'>
-        <button className='border-2 border-[#1E40AF] flex items-center justify-center text-[#1E40AF] text-base pr-8 pl-4 py-1 rounded'><CgTemplate />Templates</button>
+      <Link to= "/template" ><button className='border-2 border-[#1E40AF] flex items-center justify-center text-[#1E40AF] text-base pr-8 pl-4 py-1 rounded'><CgTemplate />Templates</button></Link>
         <button className='flex items-center justify-center bg-[#1E40AF] text-white text-base pr-7 pl-4 py-1 rounded ml-12'><GrFormUpload />Upload existing resume</button>
         <button className='flex items-center justify-center bg-[#1E40AF] text-white text-base pr-3 pl-3 py-2 rounded '><MdOutlineRemoveRedEye />Preview</button>
         <button className='flex items-center justify-center bg-[#1E40AF] text-white text-base pr-6 pl-4 py-1 rounded'><MdOutlineFileDownload />Download</button>
@@ -101,11 +110,13 @@ const createresume = () => {
             <hr className='my-4 w-full border-t border-gray-300 mt-2'/>
             <p className='text-gray-400 text-sm pl-4'>Include a short summary about your professional experience</p>
             <div className='border border-black mx-4 mt-4 rounded-xl'>
-              <div className='flex justify-end mr-14 mt-4 text-xl gap-6'>
-                <IoIosArrowUp />
+              <div className='flex justify-end mr-14 mt-4 text-xl gap-6 pb-4'>
+                <span className='text-sm flex items-center -mr-5 text-blue-500'>{openSections['section1'] ? 'Hide Content' : 'Show Content'}</span> <div onClick={() => toggleSection('section1')} className='cursor-pointer'>{openSections['section1'] ? <IoIosArrowUp /> : <IoIosArrowDown />}</div>
                 <GoTrash />
               </div>
 
+              {openSections['section1'] && (
+              <div>
               <form action="" className='grid grid-cols-2 gap-4 px-4 mt-2'>
               <label htmlFor="" className=''>Position Title</label>
               <label htmlFor="" className=''>Company Name</label>
@@ -147,6 +158,7 @@ const createresume = () => {
               </div>
               <textarea name="" id="" rows={7} className='w-full'></textarea>
             </div>
+            </div>)}
             </div>
 
             <p className='flex items-center text-[#1E40AF] ml-4 gap-2 mt-4'><MdAdd /> Add more experience</p>
@@ -158,11 +170,13 @@ const createresume = () => {
             <hr className='my-4 w-full border-t border-gray-300 mt-2'/>
             <p className='text-gray-400 text-sm pl-4'>Add your education history, including program’s you’re currently enrolled in.</p>
             <div className='border border-black mx-4 mt-4 rounded-xl'>
-              <div className='flex justify-end mr-14 mt-4 text-xl gap-6'>
-                <IoIosArrowUp />
+              <div className='flex justify-end mr-14 mt-4 text-xl gap-6 pb-4'>
+                <span className='text-sm flex items-center -mr-5 text-blue-500'>{openSections['section2'] ? 'Hide Content' : 'Show Content'} </span> <div onClick={() => toggleSection('section2')} className='cursor-pointer'>{openSections['section2'] ? <IoIosArrowUp /> : <IoIosArrowDown />}</div>
                 <GoTrash />
               </div>
-
+              
+              {openSections['section2'] && (
+              <div>
               <form action="" className='grid grid-cols-2 gap-4 px-4 mt-2'>
               <label htmlFor="" className=''>School Name</label>
               <label htmlFor="" className=''>School Location</label>
@@ -204,7 +218,8 @@ const createresume = () => {
               </div>
               <textarea name="" id="" rows={7} className='w-full'></textarea>
             </div>
-            </div>
+            </div>)}
+          </div>
 
             <p className='flex items-center text-[#1E40AF] ml-4 gap-2 mt-4'><MdAdd /> Add more education</p>
           </div>
@@ -264,8 +279,11 @@ const createresume = () => {
             </div>
 
             <div className='flex ml-14 mt-6 gap-4'>
-              <div className='border border-gray-300 pt-2 pb-12 pr-8'>
-                <div className='flex justify-end text-2xl text-gray-500 mr-1'><IoIosArrowUp /></div>
+              <div className='border border-gray-300 mx-4 mt-4'>
+                <div className='flex justify-end mr-1 mt-4 text-xl gap-3'>
+                <span className='text-sm text-blue-500 -mr-4 pr-2 pb-2 pl-2'>{openSections['section3'] ? 'Hide Content' : 'Show Content'} </span> <div onClick={() => toggleSection('section3')} className='cursor-pointer text-xl text-gray-500'>{openSections['section3'] ? <IoIosArrowUp /> : <IoIosArrowDown />}</div></div>
+
+                {openSections['section3'] && (
                 <div>
                   <form action="" className='grid grid-cols-2 gap-4 px-4 mt-2'>
                     <label htmlFor="" className=''>School Name</label>
@@ -275,10 +293,10 @@ const createresume = () => {
 
                     <label htmlFor="">Degree</label>
                     <label htmlFor="">Field of Study</label>
-                    <input type="text" className='border border-[#B1AEAE]' />
-                    <input type="text" className='border border-[#B1AEAE]' /> 
+                    <input type="text" className='border border-[#B1AEAE] mb-8' />
+                    <input type="text" className='border border-[#B1AEAE] mb-8' /> 
                   </form>
-                </div>
+                </div>)}
               </div>
               <div>
                 <GoTrash className='mt-10' />
@@ -302,10 +320,12 @@ const createresume = () => {
             <div className='flex ml-10 mt-6 gap-4'>
               <div className='px-4 pt-2 pb-6 border border-gray-300'>
                 <div className='flex items-center justify-between'>
-                  <div>English <span className='text-gray-400'>- Expert</span></div>
-                  <div className='flex items-center gap-3'><GoTrash /> <IoIosArrowUp className='text-xl' /></div>
+                  <div>English <span className='text-gray-400 pr-4'>- Expert </span></div>
+                  <div className='flex items-center gap-1'><GoTrash /> 
+                  <span className='text-sm text-blue-500 -mr-4 pr-2 pb-2'>{openSections['section4'] ? '' : ''} </span> <div onClick={() => toggleSection('section4')} className='cursor-pointer text-xl text-gray-500'>{openSections['section4'] ? <IoIosArrowUp /> : <IoIosArrowDown />}</div></div>
                 </div>
-
+                
+                {openSections['section4'] && (
                 <div className='flex mt-5 gap-3 items-center'>
                   <p>Language</p>
                   <input type="text" className='border border-gray-300 w-52' />
@@ -317,7 +337,7 @@ const createresume = () => {
                     <MdStarRate />
                     <MdStarRate />
                   </div>
-                </div>
+                </div>)}
               </div>
 
               <div><GoTrash className='mt-8' /></div>
@@ -359,7 +379,7 @@ const createresume = () => {
         </div>
 
         <div className='flex bg-white border rounded w-11/12 h-24 mt-8 mb-4'>
-          <div className='bg-[#1E40AF] rounded flex items-center justify-center w-1/4 h-auto border-solid border-8 border-[#1E40AF]'><img src={Link} alt="" className='w-16 h-16' /></div>
+          <div className='bg-[#1E40AF] rounded flex items-center justify-center w-1/4 h-auto border-solid border-8 border-[#1E40AF]'><img src={Linkalt} alt="" className='w-16 h-16' /></div>
           <div className='font-medium text-3xl text-center flex flex-grow justify-center items-center'><p className='-ml-40'>Links</p></div>
         </div>
 
@@ -378,4 +398,4 @@ const createresume = () => {
   )
 }
 
-export default createresume
+export default Createresume
