@@ -74,8 +74,12 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center max-w-full h-24 mx-auto px-4 mt-4 text-black text-base font-[Poppins] bg-grad">
-        <img src={Logo} alt="" className="" />
+      <div className="flex justify-between items-center max-w-full h-20 lg:h-24 md:h-24 mx-auto px-4 mt-4 text-black text-base font-[Poppins] bg-grad">
+        <img
+          src={Logo}
+          alt=""
+          className="w-[120px] md:w-[200px] lg:w-[200px] h-auto"
+        />
         <ul className="hidden md:flex">
           <li className="p-4 hover:text-[#1E40AF]">
             <Link to="/" onClick={closeNav}>
@@ -97,11 +101,7 @@ const Navbar = () => {
               Templates
             </Link>
           </li>
-          <li className="p-4 hover:text-[#1E40AF]">
-            <Link to="/dashboard" onClick={closeNav}>
-              DashBoard
-            </Link>
-          </li>
+         
 
           <div className="flex items-center justify-center gap-3">
             {isLoggedIn ? (
@@ -183,8 +183,8 @@ const Navbar = () => {
                 <button
                   className="text-base border border-blue-400 bg-transparent text-white text-center w-[115.79px] p-1 rounded-md"
                   onClick={() => {
-                    closeNav();
-                    navigate("/dashboard");
+                    closeNav()
+                    navigate("/dashboard")
                   }}
                 >
                   My Account
@@ -218,7 +218,7 @@ const Navbar = () => {
         <Signup modalIsOpen={signupModalIsOpen} closeModal={closeSignupModal} />
       </div>
     </>
-  );
+  )
 };
 
 export default Navbar;
