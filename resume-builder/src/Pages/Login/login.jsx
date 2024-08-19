@@ -9,36 +9,36 @@ import Google from '/src/assets/images/Google.png';
 
 Modal.setAppElement('#root');
 
-const Login = ({ modalIsOpen, closeModal }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate()
+const Login = ({ modalIsOpen, closeModal, onClick }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/login/", {
+      const response = await fetch("/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
-      })
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
       if (response.ok) {
-        console.log(data)
-        localStorage.setItem("token", data.token.access)
-        localStorage.setItem("refreshToken", data.token.refresh)
-        localStorage.setItem("user", JSON.stringify(data.user))
-        toast.success('Login successful!') 
-         window.location.reload()
-         closeModal()
-         navigate("/dashboard")
+        console.log(data);
+        localStorage.setItem("token", data.token.access);
+        localStorage.setItem("refreshToken", data.token.refresh);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        toast.success("Login successful!");
+        window.location.reload();
+        closeModal();
+        navigate("/dashboard");
       } else {
-        toast.error("Login failed: " + data.message)
+        toast.error("Login failed: " + data.message);
       }
     } catch (error) {
-      toast.error("Login failed: " + error.message)
+      toast.error("Login failed: " + error.message);
     }
   };
   return (
@@ -126,7 +126,9 @@ const Login = ({ modalIsOpen, closeModal }) => {
               <p>
                 {"Don't"} have an account?{" "}
                 <span className="text-blue-700 font-bold cursor-pointer">
-                  <Link to="/signup">Sign Up</Link>
+                  <Link to="/signup" onClick={onClick}>
+                    Sign Up
+                  </Link>
                 </span>
               </p>
             </div>
@@ -134,7 +136,7 @@ const Login = ({ modalIsOpen, closeModal }) => {
         </div>
       </div>
     </Modal>
-  )
+  );
 };
 
 Login.propTypes = {
