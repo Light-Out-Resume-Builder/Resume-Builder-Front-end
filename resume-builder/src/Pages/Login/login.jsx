@@ -135,8 +135,8 @@ const Login = ({ modalIsOpen, closeModal }) => {
             <div className="text-center mt-6">
               <p>
                 {"Don't"} have an account?{" "}
-                <span className="text-blue-700 font-bold cursor-pointer">
-                  <Link to="/signup">Sign Up</Link>
+                <span className="text-blue-700 font-bold cursor-pointer" >
+                 Sign Up
                 </span>
               </p>
             </div>
