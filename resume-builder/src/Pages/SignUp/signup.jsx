@@ -1,40 +1,65 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { FaSpinner } from "react-icons/fa6"
 import Portfolio from "/src/assets/images/portfolio.png";
 import Google from "/src/assets/images/Google.png";
 
-Modal.setAppElement("#root")
+Modal.setAppElement("#root");
 
-const Signup = ({ modalIsOpen, closeModal }) => {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate()
+const Signup = ({ modalIsOpen, closeModal, onClick }) => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
-      const response = await fetch('/signup/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fullname: fullName, email, password }),
-      });
+      const response = await fetch(
+
+        "https://resume-builder-backend-wvco.onrender.com/register",
+        {
+          method: "POST",
+          body: JSON.stringify({ fullname: fullName, email, password }),
+          headers: { "Content-Type": "application/json" },
+        });
+        
+      if (response.status === 200) {
+        alert("Registration Successfull");
+      )
 
         const data = await response.json();
 
       if (response.ok) {
         toast.success("User created successfully")
         closeModal()
+        setLoading(false)
         navigate("/login")
+
       } else {
-         toast.error('Signup failed: ' + data.message)
+        alert("Registration Failed. Try again later");
       }
+
+      // const data = await response.json();
+
+      // if (response.ok) {
+      //   toast.success("User created successfully");
+      //   closeModal();
+      //   navigate("/login");
+      // } else {
+      //   toast.error("Signup failed: " + data.message);
+      // }
     } catch (error) {
-      toast.error('Signup failed: ' + error.message)
+      toast.error("Signup failed: " + error.message);
     }
+    setLoading(false)
   };
 
   return (
@@ -56,7 +81,11 @@ const Signup = ({ modalIsOpen, closeModal }) => {
           <h2 className="text-2xl md:text-3xl text-blue-700 font-bold mb-6">
             Creating Perfect <br /> Resume Made Easy
           </h2>
-          <img src={Portfolio} alt="Portfolio" className="w-full h-auto hidden md:block lg:block " />
+          <img
+            src={Portfolio}
+            alt="Portfolio"
+            className="w-full h-auto hidden md:block lg:block "
+          />
         </div>
         <div className="flex-1">
           <h2 className="text-2xl md:text-3xl font-semibold">
@@ -114,7 +143,9 @@ const Signup = ({ modalIsOpen, closeModal }) => {
               />
             </div>
             <div className="flex items-center">
-              <input type="checkbox" className="w-5 h-5" />
+              <label htmlFor="">
+                <input type="checkbox" className="w-5 h-5" />
+              </label>
               <p className="ml-2 text-sm font-medium">
                 I agree to the Terms and Conditions and Privacy Policy
               </p>
@@ -123,7 +154,11 @@ const Signup = ({ modalIsOpen, closeModal }) => {
               type="submit"
               className="w-full text-white bg-blue-700 px-3 py-2 rounded-md mt-6"
             >
-              Sign Up
+              {loading ? (
+                <FaSpinner className="animate-spin items-center flex justify-center" />
+              ) : (
+                "Sign Up"
+              )}
             </button>
             <div className="mt-6 text-center font-medium">
               <p>Or</p>
@@ -138,7 +173,10 @@ const Signup = ({ modalIsOpen, closeModal }) => {
             <div className="text-center mt-6">
               <p>
                 Already have an account?{" "}
-                <span className="text-blue-700 font-bold cursor-pointer">
+                <span
+                  className="text-blue-700 font-bold cursor-pointer"
+                  onClick={onClick}
+                >
                   Sign In
                 </span>
               </p>
@@ -147,12 +185,12 @@ const Signup = ({ modalIsOpen, closeModal }) => {
         </div>
       </div>
     </Modal>
-  )
-}
+  );
+};
 
 Signup.propTypes = {
   modalIsOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
-}
+};
 
-export default Signup
+export default Signup;
