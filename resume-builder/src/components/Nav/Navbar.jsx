@@ -31,6 +31,7 @@ const Navbar = () => {
   const openLoginModal = (e) => {
     e.preventDefault();
     setLoginModalIsOpen(true);
+     setSignupModalIsOpen(false);
     closeNav();
   };
 
@@ -41,6 +42,8 @@ const Navbar = () => {
   const openSignupModal = (e) => {
     e.preventDefault();
     setSignupModalIsOpen(true);
+    setLoginModalIsOpen(false);
+
     closeNav();
   };
 
@@ -172,11 +175,6 @@ const Navbar = () => {
               Templates
             </Link>
           </li>
-          <li className="p-4 border-b border-gray-300">
-            <Link to="/dashboard" onClick={closeNav}>
-              Dashboard
-            </Link>
-          </li>
           <div className="flex items-center justify-center mt-4 gap-2">
             {isLoggedIn ? (
               <>
@@ -214,8 +212,16 @@ const Navbar = () => {
             )}
           </div>
         </ul>
-        <Login modalIsOpen={loginModalIsOpen} closeModal={closeLoginModal} />
-        <Signup modalIsOpen={signupModalIsOpen} closeModal={closeSignupModal} />
+        <Login
+          modalIsOpen={loginModalIsOpen}
+          onClick={openSignupModal}
+          closeModal={closeLoginModal}
+        />
+        <Signup
+          modalIsOpen={signupModalIsOpen}
+          onClick={openLoginModal}
+          closeModal={closeSignupModal}
+        />
       </div>
     </>
   )

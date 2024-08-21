@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa6";
 import Portfolio from "/src/assets/images/portfolio.png";
@@ -18,7 +18,7 @@ const Signup = ({ modalIsOpen, closeModal }) => {
   const [loading, setLoading] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleModal = () => {
     closeModal();

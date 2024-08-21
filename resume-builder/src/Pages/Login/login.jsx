@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaSpinner } from "react-icons/fa6"
@@ -10,16 +9,20 @@ import Google from '/src/assets/images/Google.png';
 
 Modal.setAppElement('#root');
 
-const Login = ({ modalIsOpen, closeModal }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+const Login = ({ modalIsOpen, closeModal, onClick }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate()
+  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true)
     try {
+
       const response = await fetch(
         "https://resume-builder-backend-wvco.onrender.com/login/",
         {
@@ -29,7 +32,7 @@ const Login = ({ modalIsOpen, closeModal }) => {
         }
       )
 
-    const data = await response.json();
+      const data = await response.json();
 
       if (response.ok) {
         console.log(data)
@@ -41,11 +44,12 @@ const Login = ({ modalIsOpen, closeModal }) => {
          closeModal()
           setLoading(false)
          navigate("/dashboard")
+
       } else {
-        toast.error("Login failed: " + data.message)
+        toast.error("Login failed: " + data.message);
       }
     } catch (error) {
-      toast.error("Login failed: " + error.message)
+      toast.error("Login failed: " + error.message);
     }
      setLoading(false)
   };
@@ -144,7 +148,7 @@ const Login = ({ modalIsOpen, closeModal }) => {
         </div>
       </div>
     </Modal>
-  )
+  );
 };
 
 Login.propTypes = {
