@@ -31,6 +31,7 @@ const Navbar = () => {
   const openLoginModal = (e) => {
     e.preventDefault();
     setLoginModalIsOpen(true);
+     setSignupModalIsOpen(false);
     closeNav();
   };
 
@@ -41,6 +42,8 @@ const Navbar = () => {
   const openSignupModal = (e) => {
     e.preventDefault();
     setSignupModalIsOpen(true);
+    setLoginModalIsOpen(false);
+
     closeNav();
   };
 
@@ -214,8 +217,16 @@ const Navbar = () => {
             )}
           </div>
         </ul>
-        <Login modalIsOpen={loginModalIsOpen} closeModal={closeLoginModal} />
-        <Signup modalIsOpen={signupModalIsOpen} closeModal={closeSignupModal} />
+        <Login
+          modalIsOpen={loginModalIsOpen}
+          onClick={openSignupModal}
+          closeModal={closeLoginModal}
+        />
+        <Signup
+          modalIsOpen={signupModalIsOpen}
+          onClick={openLoginModal}
+          closeModal={closeSignupModal}
+        />
       </div>
     </>
   )
