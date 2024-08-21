@@ -1,8 +1,10 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
+
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FaSpinner } from "react-icons/fa6"
 import Portfolio from "/src/assets/images/portfolio.png";
 import Google from "/src/assets/images/Google.png";
 
@@ -13,11 +15,15 @@ const Signup = ({ modalIsOpen, closeModal, onClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       const response = await fetch(
+
         "https://resume-builder-backend-wvco.onrender.com/register",
         {
           method: "POST",
@@ -27,6 +33,16 @@ const Signup = ({ modalIsOpen, closeModal, onClick }) => {
         
       if (response.status === 200) {
         alert("Registration Successfull");
+      )
+
+        const data = await response.json();
+
+      if (response.ok) {
+        toast.success("User created successfully")
+        closeModal()
+        setLoading(false)
+        navigate("/login")
+
       } else {
         alert("Registration Failed. Try again later");
       }
@@ -43,6 +59,7 @@ const Signup = ({ modalIsOpen, closeModal, onClick }) => {
     } catch (error) {
       toast.error("Signup failed: " + error.message);
     }
+    setLoading(false)
   };
 
   return (
@@ -126,7 +143,9 @@ const Signup = ({ modalIsOpen, closeModal, onClick }) => {
               />
             </div>
             <div className="flex items-center">
-              <input type="checkbox" className="w-5 h-5" />
+              <label htmlFor="">
+                <input type="checkbox" className="w-5 h-5" />
+              </label>
               <p className="ml-2 text-sm font-medium">
                 I agree to the Terms and Conditions and Privacy Policy
               </p>
@@ -135,7 +154,11 @@ const Signup = ({ modalIsOpen, closeModal, onClick }) => {
               type="submit"
               className="w-full text-white bg-blue-700 px-3 py-2 rounded-md mt-6"
             >
-              Sign Up
+              {loading ? (
+                <FaSpinner className="animate-spin items-center flex justify-center" />
+              ) : (
+                "Sign Up"
+              )}
             </button>
             <div className="mt-6 text-center font-medium">
               <p>Or</p>

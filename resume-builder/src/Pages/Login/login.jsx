@@ -4,42 +4,55 @@ import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FaSpinner } from "react-icons/fa6"
 import Portfolio from '/src/assets/images/portfolio.png';
 import Google from '/src/assets/images/Google.png';
 
 Modal.setAppElement('#root');
 
+
 const Login = ({ modalIsOpen, closeModal, onClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
-      const response = await fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+
+      const response = await fetch(
+        "https://resume-builder-backend-wvco.onrender.com/login/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      )
 
       const data = await response.json();
 
       if (response.ok) {
-        console.log(data);
-        localStorage.setItem("token", data.token.access);
-        localStorage.setItem("refreshToken", data.token.refresh);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        toast.success("Login successful!");
-        window.location.reload();
-        closeModal();
-        navigate("/dashboard");
+        console.log(data)
+        localStorage.setItem("token", data.token.access)
+        localStorage.setItem("refreshToken", data.token.refresh)
+        localStorage.setItem("user", JSON.stringify(data.user))
+        toast.success('Login successful!') 
+         window.location.reload()
+         closeModal()
+          setLoading(false)
+         navigate("/dashboard")
+
       } else {
         toast.error("Login failed: " + data.message);
       }
     } catch (error) {
       toast.error("Login failed: " + error.message);
     }
+     setLoading(false)
   };
   return (
     <Modal
@@ -106,12 +119,14 @@ const Login = ({ modalIsOpen, closeModal, onClick }) => {
                 Forgot Password?
               </p>
             </div>
-            <button
-              type="submit"
-              className="w-full text-white bg-blue-700 px-3 py-2 rounded-md mt-6"
-            >
-              Sign In
-            </button>
+            <div className="text-center">
+              <button
+                type="submit"
+                className="w-full text-white bg-blue-700 px-3 py-2 rounded-md mt-6"
+              >
+                {loading ? <FaSpinner className="animate-spin" /> : "Sign In"} 
+              </button>
+            </div>
             <div className="mt-6 text-center font-medium">
               <p>Or</p>
             </div>
