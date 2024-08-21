@@ -175,11 +175,6 @@ const Navbar = () => {
               Templates
             </Link>
           </li>
-          <li className="p-4 border-b border-gray-300">
-            <Link to="/dashboard" onClick={closeNav}>
-              Dashboard
-            </Link>
-          </li>
           <div className="flex items-center justify-center mt-4 gap-2">
             {isLoggedIn ? (
               <>
