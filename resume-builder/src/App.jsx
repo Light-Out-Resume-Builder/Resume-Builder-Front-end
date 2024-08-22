@@ -4,7 +4,7 @@ import Header from "./components/Nav/Navbar.jsx"
 import LandingPage from "./Pages/LandingPage/landing.jsx"
 import Footer from "./components/Footer/Footer.jsx"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Services from "./Pages/Services/services.jsx"
+import Services from "./Pages/services/Services.jsx"
 import About from "./Pages/About/about.jsx"
 import Template from "./Pages/Template/Template.jsx"
 import Resume from "./Pages/Template/Resume.jsx"
@@ -22,6 +22,7 @@ import UserCoverLetter from "./Pages/DashBoard/UserCoverLetter.jsx";
 import CoverLetterBuilderC from './Pages/DashBoard/CoverLetterBuilderC.jsx';
 import CoverLetterBuilderB from './Pages/DashBoard/CoverLetterBuilderB.jsx';
 import CoverLetterBuilder from './Pages/DashBoard/CoverLetterBuilder.jsx';
+
 
 
 
