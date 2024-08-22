@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaSpinner } from "react-icons/fa6"
@@ -140,10 +139,8 @@ const Login = ({ modalIsOpen, closeModal, onClick }) => {
             <div className="text-center mt-6">
               <p>
                 {"Don't"} have an account?{" "}
-                <span className="text-blue-700 font-bold cursor-pointer">
-                  <Link to="/signup" onClick={onClick}>
-                    Sign Up
-                  </Link>
+                <span className="text-blue-700 font-bold cursor-pointer" >
+                 Sign Up
                 </span>
               </p>
             </div>
